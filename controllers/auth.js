@@ -1,6 +1,7 @@
 const users = require("../models/user.js");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const path = require("path")
 // Импорты
 
 const login = (req, res) => {
@@ -26,21 +27,22 @@ const login = (req, res) => {
         res.status(401).send({ message: error.message });
       });
   };
+  const sendDashboard = (req, res) => {
+    res.sendFile(path.join(__dirname, "../public/admin/dashboard.html"));
+  }; 
 
   const sendIndex = (req, res) => {
     if (req.cookies.jwt) {
       try {
         jwt.verify(req.cookies.jwt, "some-secret-key");
-        return res.sendFile(
-          path.join(__dirname, "../public/admin/dashboard.html")
-        );
+        return res.redirect("/admin/dashboard");
       } catch (err) {
         res.sendFile(path.join(__dirname, "../public/index.html"));
       }
     }
     res.sendFile(path.join(__dirname, "../public/index.html"));
   };
-  
 
+  
 // Не забываем экспортирвать функцию
-module.exports = { login, sendIndex };
+module.exports = { login, sendIndex, sendDashboard };

@@ -12,17 +12,14 @@ const apiRouter = require("./routes/apiRouter");
 const pagesRouter = require("./routes/pages");
 
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 
 app.use(
   cors,
   bodyParser.json(),
   cookieParser(), 
-  apiRouter, // Добавляем
+  apiRouter,
   express.static(path.join(__dirname, "public")),
-  usersRouter,
-  gamesRouter,
-  categoriesRouter,
   pagesRouter
 );
 
