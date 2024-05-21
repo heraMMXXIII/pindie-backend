@@ -26,12 +26,7 @@ const {
 
 gamesRouter.get("/games", findAllGames, sendAllGames);
 gamesRouter.get("/games/:id", findGameById, sendGameById);
-gamesRouter.delete(
-  "/games/:id", // Слушаем запросы по эндпоинту
-  checkAuth, 
-  deleteGame,
-  sendGameDeleted // Тут будут функция удаления элементов из MongoDB и ответ клиенту
-);
+
 
 // Файл routes/games.js
 
@@ -56,5 +51,12 @@ gamesRouter.put(
   checkAuth,
   updateGame,
   sendGameUpdated
+);
+
+gamesRouter.delete(
+  "/games/:id", // Слушаем запросы по эндпоинту
+  checkAuth, 
+  deleteGame,
+  sendGameDeleted // Тут будут функция удаления элементов из MongoDB и ответ клиенту
 );
 module.exports = gamesRouter;

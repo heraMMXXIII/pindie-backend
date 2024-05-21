@@ -53,7 +53,7 @@ usersRouter.delete(
   sendUserDeleted
 ); 
 
-usersRouter.get("/me", checkAuth, sendMe);
+usersRouter.get("/me", checkAuth, sendMe); 
 
 // Экспортируем роут для использования в приложении — app.js
 module.exports = usersRouter;
