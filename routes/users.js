@@ -1,6 +1,6 @@
 // Создаём роут для запросов пользователей
 const usersRouter = require("express").Router();
-
+const { checkAuth } = require("../middlewares/auth");
 // Импортируем вспомогательные функции
 const {
   findAllUsers,
@@ -21,7 +21,7 @@ const {
   sendUserDeleted,
   sendMe,
 } = require("../controllers/users");
-const { checkAuth } = require("../middlewares/Auth");
+
 
 // Обрабатываем GET-запрос с роутом '/users'
 usersRouter.get("/users", findAllUsers, sendAllUsers);
