@@ -1,7 +1,7 @@
 // Файл routes/games.js
 
 const gamesRouter = require("express").Router();
-const { checkAuth } = require("../middlewares/Auth");
+const { checkAuth } = require("../middlewares/auth");
 
 const {
   findAllGames,
