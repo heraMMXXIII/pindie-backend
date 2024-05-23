@@ -4,7 +4,7 @@ const categoriesRouter = require('express').Router();
 // Импортируем вспомогательные функции
 const {findAllCategories, createCategory, findCategoryById, updateCategory, deleteCategory, checkIsCategoryExists, checkEmptyName} = require('../middlewares/categories');
 const {sendAllCategories, sendCategoryCreated, sendCategoryById, sendCategoryUpdated, sendCategoryDeleted} = require('../controllers/categories');
-const { checkAuth } = require('../middlewares/Auth');
+const { checkAuth } = require('../middlewares/auth');
 
 // Обрабатываем GET-запрос с роутом '/categories'
 categoriesRouter.get('/categories', findAllCategories, sendAllCategories);
