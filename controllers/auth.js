@@ -10,7 +10,7 @@ const login = (req, res) => {
     .findUserByCredentials(email, password)
     .then((user) => {
         const token = jwt.sign({ _id: user._id }, "some-secret-key", {
-        expiresIn: 3600
+        expiresIn: '7d'
       });
       return { user, token };
     })

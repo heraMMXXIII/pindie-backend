@@ -2,19 +2,19 @@ const jwt = require("jsonwebtoken");
 
 const checkAuth = (req, res, next) => {
   const { authorization } = req.headers;
-  console.log(authorization)
+
   if (!authorization || !authorization.startsWith("Bearer ")) {
     return res.status(401).send({ message: "Необходима авторизация" });
   }
 
   const token = authorization.replace("Bearer ", "");
-  console.log(token)
-  // try {
+
+  try {
     req.user = jwt.verify(token, "some-secret-key");
-    // console.log("try сработал");
-  // } catch (err) {
-  //   return res.status(401).send({ message: "Необходима авторизация" });
-  // }
+
+ } catch (err) {
+     return res.status(401).send({ message: "Необходима авторизация" });
+ }
 
   next();
 };
