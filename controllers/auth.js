@@ -1,6 +1,6 @@
 const users = require("../models/user.js");
 const jwt = require("jsonwebtoken");
-const path = require("path")
+const path = require("path");
 // Импорты
 
 const login = (req, res) => {
@@ -9,22 +9,24 @@ const login = (req, res) => {
   users
     .findUserByCredentials(email, password)
     .then((user) => {
-        const token = jwt.sign({ _id: user._id }, "some-secret-key", {
-        expiresIn: '7d'
+      const token = jwt.sign({ _id: user._id }, "some-secret-key", {
+        expiresIn: "7d",
       });
       return { user, token };
     })
     .then(({ user, token }) => {
-      res
-        .status(200)
-        .send({
-            _id: user._id, 
-            username: user.username, 
-            email: user.email, 
-            jwt: token });
-          })
-    
-}; 
+      res.status(200).send({
+        _id: user._id,
+        username: user.username,
+        email: user.email,
+        jwt: token,
+      });
+    })
+
+    .catch((error) => {
+      res.status(401).send({ message: error.message });
+    });
+};
 
 const sendDashboard = (req, res) => {
   res.sendFile(path.join(__dirname, "../public/admin/dashboard.html"));
