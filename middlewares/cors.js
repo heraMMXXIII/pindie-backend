@@ -2,7 +2,7 @@
 const allowedCors = [
   "https://pindie-frontend-vadim.nomoredomainswork.ru",
   "http://localhost:3000",
-  "http://localhost:3001",
+  "http://localhost:3001/",
 ];
 
 function cors(req, res, next) {
