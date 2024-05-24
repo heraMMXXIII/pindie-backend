@@ -1,6 +1,6 @@
 // Список сайтов, которым мы разрешаем обращаться к серверу
 const allowedCors = [
-  "https://pindie-frontend-vadim.nomoredomainswork.ru",
+  "https://pindie-frontend-vadim.nomoredomainswork.ru/",
   "http://localhost:3000",
   "http://localhost:3001/",
 ];
